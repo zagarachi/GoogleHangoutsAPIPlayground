@@ -55,13 +55,11 @@
 <script>
 function pickParticipant() {
   var participants = gapi.hangout.getParticipants();
-  var div = document.getElementById('pickedParticipant');
+
   var retVal = '<p>Participants: </p><ul>';
   
-  div.innerHTML = '<p>start</p>'
   //test
   for (var index in participants) {
-	  div.innerHTML = '<p>inside For</p>'
 	var participant = participants[index];
 	
 	if (!participant.person) {
@@ -71,7 +69,7 @@ function pickParticipant() {
 
   }
 	
-  div.innerHTML = '<p>afterFor</p>'
+
   
 
   var participant = participants[Math.floor(Math.random() * myArray.length)];
@@ -83,7 +81,7 @@ function pickParticipant() {
 
   retVal += '</ul>';
 
- 
+  var div = document.getElementById('pickedParticipant');
 
   div.innerHTML = retVal;
 }
