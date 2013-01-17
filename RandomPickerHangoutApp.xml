@@ -63,7 +63,7 @@ function pickParticipant() {
   if (!participant.person) {
 	retVal = '<p>A participant not running this app</p>';
   }
-  retVal = createSelectedParticipantResultHTML(participant.person.displayName);
+  retVal = createSelectedParticipantResultHTML(participant);
 
   var div = document.getElementById('pickedParticipant');
 
