@@ -73,7 +73,7 @@ function pickParticipant() {
 function createSelectedParticipantResultHTML(selectedParticipant)
 {
   var retVal = '<p class=\"displayed\">' + selectedParticipant.person.displayName + '</p>';
-  retval += '<img class=\"displayed\" src=\"'+ selectedParticipant.person.image.url + '\"/>>
+  retval += '<img class=\"displayed\" src=\"'+ selectedParticipant.person.image.url + '\"/>>;
   retval += '<p class=\"displayed\"> YOU HAVE BEEN CHOSEN!</p>';
   return retVal
 }
