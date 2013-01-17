@@ -55,24 +55,8 @@
 <script>
 function pickParticipant() {
   var participants = gapi.hangout.getParticipants();
-  var div = document.getElementById('pickedParticipant');
-  var retVal = '<p>Participants: </p><ul>';
-  
-  div.innerHTML = '<p>start</p>'
-  //test
-  for (var index in participants) {
-	  div.innerHTML = '<p>inside For</p>'
-	var participant = participants[index];
-	
-	if (!participant.person) {
-		retVal += '<li>A participant not running this app</li>';
-	}
-	retVal += '<li>' + participant.person.displayName + '</li>';
 
-  }
-	
-  div.innerHTML = '<p>afterFor</p>'
-  
+  var retVal = '<p>Participants: </p><ul>';
 
   var participant = participants[Math.floor(Math.random() * myArray.length)];
 
@@ -83,7 +67,7 @@ function pickParticipant() {
 
   retVal += '</ul>';
 
- 
+  var div = document.getElementById('pickedParticipant');
 
   div.innerHTML = retVal;
 }
