@@ -33,14 +33,16 @@
 .button:active {
 	background: -webkit-gradient(linear, left top, left bottom, from(#aaa), to(#333)); 
 	background: -moz-linear-gradient(bottom, #ddd, #aaa); }
-
+	
+.displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: auto }
 -->
 </style>
 <body>
 
 <script src="https://hangoutsapi.talkgadget.google.com/hangouts/api/hangout.js?v=1.0" ></script>
-
-<h3>Simple Hangout App</h3>
 
 <p>
 <input class="button" type="button" value="Pick Someone!" id="pickParticipant" 
@@ -56,18 +58,23 @@
 function pickParticipant() {
   var participants = gapi.hangout.getParticipants();
 
-  var retVal = '<p> YOU HAVE BEEN CHOSEN!</p>';
-
   var participant = participants[Math.floor(Math.random() * participants.length)];
 
   if (!participant.person) {
 	retVal = '<p>A participant not running this app</p>';
   }
-  retVal = '<p>' + participant.person.displayName + '</p>' + retVal;
+  retVal = createSelectedParticipantResultHTML(participant.person.displayName);
 
   var div = document.getElementById('pickedParticipant');
 
   div.innerHTML = retVal;
+}
+
+function createSelectedParticipantResultHTML(Participant selectedParticipant)
+{
+  var retVal = '<p class=\"displayed\">' + selectedParticipant.person.displayName + '</p>';
+  retval += '<img class=\"displayed\" src=\"'+ selectedParticipant.person.image.url + '\"/>>
+  retval += '<p class=\"displayed\"> YOU HAVE BEEN CHOSEN!</p>';
 }
 
 function init() {
