@@ -37,7 +37,10 @@
 .displayed {
     display: block;
     margin-left: auto;
-    margin-right: auto }
+    margin-right: auto; }
+	
+P.displayed {
+     text-align: center; }
 -->
 </style>
 <body>
@@ -45,7 +48,7 @@
 <script src="https://hangoutsapi.talkgadget.google.com/hangouts/api/hangout.js?v=1.0" ></script>
 
 <p>
-<input class="button" type="button" value="Pick Someone!" id="pickParticipant" 
+<input class="button displayed" type="button" value="Pick Someone!" id="pickParticipant" 
     style="visibility:hidden;"
     onClick="pickParticipant()"/>
 </p>
