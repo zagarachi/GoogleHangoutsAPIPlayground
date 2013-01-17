@@ -57,6 +57,20 @@ function pickParticipant() {
   var participants = gapi.hangout.getParticipants();
 
   var retVal = '<p>Participants: </p><ul>';
+  
+  //test
+  for (var index in participants) {
+	var participant = participants[index];
+	
+	if (!participant.person) {
+		retVal += '<li>A participant not running this app</li>';
+	}
+	retVal += '<li>' + participant.person.displayName + '</li>';
+
+  }
+	
+
+  
 
   var participant = participants[Math.floor(Math.random() * myArray.length)];
 
