@@ -58,7 +58,7 @@ function pickParticipant() {
 
   var retVal = '<p>Participants: </p><ul>';
 
-  var participant = participants[Math.floor(Math.random() * myArray.length)];
+  var participant = participants[Math.floor(Math.random() * participants.length)];
 
   if (!participant.person) {
 	retVal += '<li>A participant not running this app</li>';
