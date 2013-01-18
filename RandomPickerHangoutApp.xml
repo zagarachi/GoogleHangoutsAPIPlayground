@@ -63,7 +63,7 @@ function pickParticipant() {
 
 	var participant = participants[Math.floor(Math.random() * participants.length)];
 
-	gapi.hangout.data.setValue('pickedParticipant', participant);
+	gapi.hangout.data.setValue('pickedParticipant', JSON.stringify(participant));
   
 }
 
