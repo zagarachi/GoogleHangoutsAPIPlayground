@@ -58,6 +58,17 @@ P.displayed {
 <hr>
 
 <script>
+//store who you are, incase you dont know :P
+var me = gapi.hangout.getLocalParticipant();
+
+var topHat = gapi.hangout.av.effects.createImageResource('http://hangoutmediastarter.appspot.com/static/topHat.png');
+var overlay = topHat.createFaceTrackingOverlay(
+	{'trackingFeature':
+	 gapi.hangout.av.effects.FaceTrackingFeature.NOSE_ROOT,
+	 'scaleWithFace': true,
+	 'rotateWithFace': true,
+	 'scale': 1.0});
+
 function pickParticipant() {
 	var participants = gapi.hangout.getParticipants();
 
@@ -76,15 +87,28 @@ function setSelectedParticipantResultHTML(selectedParticipant)
 {
 	var div = document.getElementById('pickedParticipant');
 	
-	if (!selectedParticipant.person) {
-	div.innerHTML = '<p>Picked a participant not running this app.</p>';
+	// If the person is not using the app
+	if (!selectedParticipant.person) 
+	{
+		div.innerHTML = '<p>Picked a participant not running this app.</p>';
+		overlay.setVisible(false);
 	}
+	// If you have been picked
+	else if (me.id == selectedParticipant.id)
+	{
+		div.innerHTML = '<p>You have been chosen!</p>';
+		overlay.setVisible(true);
+	}
+	//show who has been chosen
+	else
+	{
+		var retVal = '<p class=\"displayed\">' + selectedParticipant.person.displayName + '</p>';
+		retVal += '<img class=\"displayed\" src=\"'+ selectedParticipant.person.image.url + '\"/>';
+		retVal += '<p class=\"displayed\"> Has been chosen!</p>';
 
-	var retVal = '<p class=\"displayed\">' + selectedParticipant.person.displayName + '</p>';
-	retVal += '<img class=\"displayed\" src=\"'+ selectedParticipant.person.image.url + '\"/>';
-	retVal += '<p class=\"displayed\"> YOU HAVE BEEN CHOSEN!</p>';
-
-	div.innerHTML = retVal;
+		div.innerHTML = retVal;
+		overlay.setVisible(false);
+	}
 }
 
 function init() {
