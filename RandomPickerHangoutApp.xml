@@ -96,7 +96,11 @@ function init() {
 		function(eventObj) {
 			if (eventObj.isApiReady) {
 				document.getElementById('pickParticipant').style.visibility = 'visible';
-				gapi.hangout.data.onStateChanged.add(onStateChangedHandler);
+				console.log('Adding onStateChanged event handeler')
+				gapi.hangout.data.onStateChanged.add(function(eventObj) {
+						var div = document.getElementById('pickedParticipant');
+						div.innerHTML = '<p>Event recived</p>';
+					});
 			}
 	});
 }
