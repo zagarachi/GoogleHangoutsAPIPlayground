@@ -71,6 +71,8 @@ function onStateChangedHandler(stateChangedEvent)
 {
 	var test = stateChangedEvent;
 	//setSelectedParticipantResultHTML
+	var div = document.getElementById('pickedParticipant');
+	div.innerHTML = '<p>Event recived</p>';
 }
 
 function setSelectedParticipantResultHTML(selectedParticipant)
