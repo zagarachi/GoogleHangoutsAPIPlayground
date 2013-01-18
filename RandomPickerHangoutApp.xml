@@ -59,15 +59,9 @@ P.displayed {
 
 <script>
 //store who you are, incase you dont know :P
-var me = gapi.hangout.getLocalParticipant();
-
-var topHat = gapi.hangout.av.effects.createImageResource('http://hangoutmediastarter.appspot.com/static/topHat.png');
-var overlay = topHat.createFaceTrackingOverlay(
-	{'trackingFeature':
-	 gapi.hangout.av.effects.FaceTrackingFeature.NOSE_ROOT,
-	 'scaleWithFace': true,
-	 'rotateWithFace': true,
-	 'scale': 1.0});
+var me = '';
+var topHat = '';
+var overlay = '';
 
 function pickParticipant() {
 	var participants = gapi.hangout.getParticipants();
@@ -119,6 +113,16 @@ function init() {
 				document.getElementById('pickParticipant').style.visibility = 'visible';
 				console.log('Adding onStateChanged event handeler')
 				gapi.hangout.data.onStateChanged.add(onStateChangedHandler);
+				me = gapi.hangout.getLocalParticipant();
+				topHat = gapi.hangout.av.effects.createImageResource('http://hangoutmediastarter.appspot.com/static/topHat.png');
+				overlay = topHat.createFaceTrackingOverlay(
+				{
+					'trackingFeature':
+					gapi.hangout.av.effects.FaceTrackingFeature.NOSE_ROOT,
+					'scaleWithFace': true,
+					'rotateWithFace': true,
+					'scale': 1.0
+				});
 			}
 	});
 }
