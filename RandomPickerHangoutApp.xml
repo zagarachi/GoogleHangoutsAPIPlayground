@@ -76,7 +76,7 @@ function setSelectedParticipantResultHTML(selectedParticipant)
 {
 	var div = document.getElementById('pickedParticipant');
 	
-	if (!participant.person) {
+	if (!selectedParticipant.person) {
 	div.innerHTML = '<p>Picked a participant not running this app.</p>';
 	}
 
