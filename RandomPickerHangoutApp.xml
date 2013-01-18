@@ -69,10 +69,7 @@ function pickParticipant() {
 
 function onStateChangedHandler(stateChangedEvent)
 {
-	var test = stateChangedEvent;
-	//setSelectedParticipantResultHTML
-	var div = document.getElementById('pickedParticipant');
-	div.innerHTML = '<p>Event recived</p>';
+	setSelectedParticipantResultHTML(JSON.parse(gapi.hangout.data.getValue('pickedParticipant')));
 }
 
 function setSelectedParticipantResultHTML(selectedParticipant)
