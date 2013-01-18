@@ -59,37 +59,44 @@ P.displayed {
 
 <script>
 function pickParticipant() {
-  var participants = gapi.hangout.getParticipants();
+	var participants = gapi.hangout.getParticipants();
 
-  var participant = participants[Math.floor(Math.random() * participants.length)];
+	var participant = participants[Math.floor(Math.random() * participants.length)];
 
-  if (!participant.person) {
-	retVal = '<p>A participant not running this app</p>';
-  }
-  retVal = createSelectedParticipantResultHTML(participant);
-
-  var div = document.getElementById('pickedParticipant');
-
-  div.innerHTML = retVal;
+	gapi.hangout.data.setValue('pickedParticipant', participant);
+  
 }
 
-function createSelectedParticipantResultHTML(selectedParticipant)
+function onStateChangedHandler(stateChangedEvent)
 {
-  var retVal = '<p class=\"displayed\">' + selectedParticipant.person.displayName + '</p>';
-  retVal += '<img class=\"displayed\" src=\"'+ selectedParticipant.person.image.url + '\"/>';
-  retVal += '<p class=\"displayed\"> YOU HAVE BEEN CHOSEN!</p>';
-  return retVal
+	var test = stateChangedEvent;
+	//setSelectedParticipantResultHTML
+}
+
+function setSelectedParticipantResultHTML(selectedParticipant)
+{
+	var div = document.getElementById('pickedParticipant');
+	
+	if (!participant.person) {
+	div.innerHTML = '<p>Picked a participant not running this app.</p>';
+	}
+
+	var retVal = '<p class=\"displayed\">' + selectedParticipant.person.displayName + '</p>';
+	retVal += '<img class=\"displayed\" src=\"'+ selectedParticipant.person.image.url + '\"/>';
+	retVal += '<p class=\"displayed\"> YOU HAVE BEEN CHOSEN!</p>';
+
+	div.innerHTML = retVal;
 }
 
 function init() {
-  // When API is ready...                                                         
-  gapi.hangout.onApiReady.add(
-      function(eventObj) {
-        if (eventObj.isApiReady) {
-          document.getElementById('pickParticipant')
-            .style.visibility = 'visible';
-        }
-      });
+	// When API is ready...                                                         
+	gapi.hangout.onApiReady.add(
+		function(eventObj) {
+			if (eventObj.isApiReady) {
+				document.getElementById('pickParticipant').style.visibility = 'visible';
+				gapi.hangout.data.onStateChanged.add( onStateChangedHandler(event) );
+			}
+	});
 }
 
 // Wait for gadget to load.                                                       
