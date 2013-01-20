@@ -114,7 +114,7 @@ function init() {
 				console.log('Adding onStateChanged event handeler')
 				gapi.hangout.data.onStateChanged.add(onStateChangedHandler);
 				me = gapi.hangout.getLocalParticipant();
-				topHat = gapi.hangout.av.effects.createImageResource('http://hangoutmediastarter.appspot.com/static/topHat.png');
+				topHat = gapi.hangout.av.effects.createImageResource('https://raw.github.com/zagarachi/GoogleHangoutsAPIPlayground/master/arrow.png');
 				overlay = topHat.createFaceTrackingOverlay(
 				{
 					'trackingFeature':
