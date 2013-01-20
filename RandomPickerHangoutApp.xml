@@ -122,7 +122,7 @@ function init() {
 					'offset': 
 					{
 						x:0,
-						y:0.5
+						y:-0.5
 					},
 					'scaleWithFace': true,
 					'rotateWithFace': true,
