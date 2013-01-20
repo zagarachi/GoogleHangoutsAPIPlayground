@@ -45,7 +45,7 @@ P.displayed {
 </style>
 <body>
 
-<script src="https://hangoutsapi.talkgadget.google.com/hangouts/api/hangout.js?v=1.0" ></script>
+<script src="https://hangoutsapi.talkgadget.google.com/hangouts/api/hangout.js?v=1.2" ></script>
 
 <p>
 <input class="button displayed" type="button" value="Pick Someone!" id="pickParticipant" 
