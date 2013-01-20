@@ -121,7 +121,7 @@ function init() {
 					gapi.hangout.av.effects.FaceTrackingFeature.NOSE_ROOT,
 					'scaleWithFace': true,
 					'rotateWithFace': true,
-					'scale': 1.0
+					'scale': 0.5
 				});
 			}
 	});
