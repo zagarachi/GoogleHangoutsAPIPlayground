@@ -119,14 +119,14 @@ function init() {
 				{
 					'trackingFeature':
 					gapi.hangout.av.effects.FaceTrackingFeature.NOSE_ROOT,
+					'offset': 
+					{
+						x:0,
+						y:0.5
+					}
 					'scaleWithFace': true,
 					'rotateWithFace': true,
 					'scale': 0.5,
-					'position': 
-					{
-						x: 0,
-						y: 0.5
-					}
 				});
 			}
 	});
