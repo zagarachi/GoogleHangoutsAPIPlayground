@@ -90,7 +90,7 @@ function setSelectedParticipantResultHTML(selectedParticipant)
 	// If you have been picked
 	else if (me.id == selectedParticipant.id)
 	{
-		div.innerHTML = '<p>You have been chosen!</p>';
+		div.innerHTML = '<p class=\"displayed\">You have been chosen!</p>';
 		overlay.setVisible(true);
 	}
 	//show who has been chosen
