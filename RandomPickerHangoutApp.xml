@@ -18,60 +18,69 @@
         <Require feature="locked-domain" />
     </ModulePrefs>
     <Content type="html"><![CDATA[
-
         <html>
         <style type="text/css">
             <!--
             .Selectors {
-                -moz-box-shadow:inset 0px 1px 0px -6px #fce2c1;
-                -webkit-box-shadow:inset 0px 1px 0px -6px #fce2c1;
-                box-shadow:inset 0px 1px 0px -6px #fce2c1;
-                background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffc477), color-stop(1, #fb9e25) );
-                background:-moz-linear-gradient( center top, #ffc477 5%, #fb9e25 100% );
-                filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffc477', endColorstr='#fb9e25');
-                background-color:#ffc477;
-                -moz-border-radius:3px;
-                -webkit-border-radius:3px;
-                border-radius:3px;
-                border:1px solid #eeb44f;
-                display:inline-block;
-                color:#ffffff;
-                font-family:Arial;
-                font-size:15px;
-                font-weight:bold;
-                padding:6px 12px;
-                text-decoration:none;
-            }.Selectors:hover {
-                 background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fb9e25), color-stop(1, #ffc477) );
-                 background:-moz-linear-gradient( center top, #fb9e25 5%, #ffc477 100% );
-                 filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fb9e25', endColorstr='#ffc477');
-                 background-color:#fb9e25;
-             }.Selectors:active {
-                  position:relative;
-                  top:1px;
-              }
+                cursor: pointer;
+                -moz-box-shadow: inset 0px 1px 0px -6px #fce2c1;
+                -webkit-box-shadow: inset 0px 1px 0px -6px #fce2c1;
+                box-shadow: inset 0px 1px 0px -6px #fce2c1;
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffc477), color-stop(1, #fb9e25));
+                background: -moz-linear-gradient(center top, #ffc477 5%, #fb9e25 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#ffc477', endColorstr = '#fb9e25');
+                background-color: #ffc477;
+                -moz-border-radius: 3px;
+                -webkit-border-radius: 3px;
+                border-radius: 3px;
+                border: 1px solid #eeb44f;
+                display: inline-block;
+                color: #ffffff;
+                font-family: Arial;
+                font-size: 15px;
+                font-weight: bold;
+                padding: 6px 12px;
+                text-decoration: none;
+            }
+
+            .Selectors:hover {
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #fb9e25), color-stop(1, #ffc477));
+                background: -moz-linear-gradient(center top, #fb9e25 5%, #ffc477 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#fb9e25', endColorstr = '#ffc477');
+                background-color: #fb9e25;
+            }
+
+            .Selectors:active {
+                position: relative;
+                top: 1px;
+            }
+
             .button:active {
                 background: -webkit-gradient(linear, left top, left bottom, from(#aaa), to(#333));
-                background: -moz-linear-gradient(bottom, #ddd, #aaa); }
+                background: -moz-linear-gradient(bottom, #ddd, #aaa);
+            }
 
             .displayed {
                 display: block;
                 margin-left: auto;
-                margin-right: auto; }
+                margin-right: auto;
+            }
 
             P.displayed {
-                text-align: center; }
+                text-align: center;
+            }
+
             -->
         </style>
         <body>
         <p>
-            <input class="Selectors" type="button" value="Previous" id="Previous"
+            <input class="Selectors" type="button" value="<" id="Previous"
                    style="visibility:visible;"
                    onClick="pickParticipant()"/>
-            <input class="Selectors" type="button" value="Pick Someone!" id="pickParticipant"
+            <input class="Selectors" type="button" value="?" id="Random"
                    style="visibility:hidden;"
                    onClick="pickParticipant()"/>
-            <input class="Selectors" type="button" value="Next" id="Next"
+            <input class="Selectors" type="button" value=">" id="Next"
                    style="visibility:visible;"
                    onClick="pickParticipant()"/>
         </p>
@@ -80,7 +89,7 @@
 
         <hr>
 
-        <script src="https://hangoutsapi.talkgadget.google.com/hangouts/api/hangout.js?v=1.2" ></script>
+        <script src="https://hangoutsapi.talkgadget.google.com/hangouts/api/hangout.js?v=1.2"></script>
         <script>
             //store who you are, incase you dont know :P
             var me = '';
@@ -96,32 +105,27 @@
 
             }
 
-            function onStateChangedHandler(stateChangedEvent)
-            {
+            function onStateChangedHandler(stateChangedEvent) {
                 setSelectedParticipantResultHTML(JSON.parse(gapi.hangout.data.getValue('pickedParticipant')));
             }
 
-            function setSelectedParticipantResultHTML(selectedParticipant)
-            {
+            function setSelectedParticipantResultHTML(selectedParticipant) {
                 var div = document.getElementById('pickedParticipant');
 
                 // If the person is not using the app
-                if (!selectedParticipant.person)
-                {
+                if (!selectedParticipant.person) {
                     div.innerHTML = '<p>Picked a participant not running this app.</p>';
                     overlay.setVisible(false);
                 }
                 // If you have been picked
-                else if (me.id == selectedParticipant.id)
-                {
+                else if (me.id == selectedParticipant.id) {
                     div.innerHTML = '<p class=\"displayed\">You have been chosen!</p>';
                     overlay.setVisible(true);
                 }
                 //show who has been chosen
-                else
-                {
+                else {
                     var retVal = '<p class=\"displayed\">' + selectedParticipant.person.displayName + '</p>';
-                    retVal += '<img class=\"displayed\" src=\"'+ selectedParticipant.person.image.url + '\"/>';
+                    retVal += '<img class=\"displayed\" src=\"' + selectedParticipant.person.image.url + '\"/>';
                     retVal += '<p class=\"displayed\"> Has been chosen!</p>';
 
                     div.innerHTML = retVal;
@@ -132,25 +136,23 @@
             function init() {
                 // When API is ready...
                 gapi.hangout.onApiReady.add(
-                        function(eventObj) {
+                        function (eventObj) {
                             if (eventObj.isApiReady) {
-                                document.getElementById('pickParticipant').style.visibility = 'visible';
+                                document.getElementById('Random').style.visibility = 'visible';
                                 console.log('Adding onStateChanged event handler')
                                 gapi.hangout.data.onStateChanged.add(onStateChangedHandler);
                                 me = gapi.hangout.getLocalParticipant();
                                 topHat = gapi.hangout.av.effects.createImageResource('https://raw.github.com/zagarachi/GoogleHangoutsAPIPlayground/master/arrow.png');
                                 overlay = topHat.createFaceTrackingOverlay(
                                         {
-                                            'trackingFeature':
-                                                    gapi.hangout.av.effects.FaceTrackingFeature.NOSE_ROOT,
-                                            'offset':
-                                            {
+                                            'trackingFeature':gapi.hangout.av.effects.FaceTrackingFeature.NOSE_ROOT,
+                                            'offset':{
                                                 x:0,
                                                 y:-0.5
                                             },
-                                            'scaleWithFace': true,
-                                            'rotateWithFace': true,
-                                            'scale': 0.5,
+                                            'scaleWithFace':true,
+                                            'rotateWithFace':true,
+                                            'scale':0.5,
                                         });
                             }
                         });
