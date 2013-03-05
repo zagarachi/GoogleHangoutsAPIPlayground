@@ -44,12 +44,15 @@
             -->
         </style>
         <body>
-
-        <script src="https://hangoutsapi.talkgadget.google.com/hangouts/api/hangout.js?v=1.2" ></script>
-
         <p>
+            <input class="button displayed" type="button" value="Previous" id="Previous"
+                   style="visibility:visible;"
+                   onClick="pickParticipant()"/>
             <input class="button displayed" type="button" value="Pick Someone!" id="pickParticipant"
                    style="visibility:hidden;"
+                   onClick="pickParticipant()"/>
+            <input class="button displayed" type="button" value="Next" id="Next"
+                   style="visibility:visible;"
                    onClick="pickParticipant()"/>
         </p>
 
@@ -57,6 +60,7 @@
 
         <hr>
 
+        <script src="https://hangoutsapi.talkgadget.google.com/hangouts/api/hangout.js?v=1.2" ></script>
         <script>
             //store who you are, incase you dont know :P
             var me = '';
