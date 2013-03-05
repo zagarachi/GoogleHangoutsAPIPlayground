@@ -22,14 +22,34 @@
         <html>
         <style type="text/css">
             <!--
-            .button {
-                border-radius: 3px;
-                -moz-border-radius: 3px;
-                background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ddd));
-                background: -moz-linear-gradient(top, #fff, #ddd);
-                border: 1px solid #bbb;
-            }
-
+            .Selectors {
+                -moz-box-shadow:inset 0px 1px 0px -6px #fce2c1;
+                -webkit-box-shadow:inset 0px 1px 0px -6px #fce2c1;
+                box-shadow:inset 0px 1px 0px -6px #fce2c1;
+                background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffc477), color-stop(1, #fb9e25) );
+                background:-moz-linear-gradient( center top, #ffc477 5%, #fb9e25 100% );
+                filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffc477', endColorstr='#fb9e25');
+                background-color:#ffc477;
+                -moz-border-radius:3px;
+                -webkit-border-radius:3px;
+                border-radius:3px;
+                border:1px solid #eeb44f;
+                display:inline-block;
+                color:#ffffff;
+                font-family:Arial;
+                font-size:15px;
+                font-weight:bold;
+                padding:6px 12px;
+                text-decoration:none;
+            }.Selectors:hover {
+                 background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fb9e25), color-stop(1, #ffc477) );
+                 background:-moz-linear-gradient( center top, #fb9e25 5%, #ffc477 100% );
+                 filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fb9e25', endColorstr='#ffc477');
+                 background-color:#fb9e25;
+             }.Selectors:active {
+                  position:relative;
+                  top:1px;
+              }
             .button:active {
                 background: -webkit-gradient(linear, left top, left bottom, from(#aaa), to(#333));
                 background: -moz-linear-gradient(bottom, #ddd, #aaa); }
@@ -45,13 +65,13 @@
         </style>
         <body>
         <p>
-            <input class="button displayed" type="button" value="Previous" id="Previous"
+            <input class="Selectors" type="button" value="Previous" id="Previous"
                    style="visibility:visible;"
                    onClick="pickParticipant()"/>
-            <input class="button displayed" type="button" value="Pick Someone!" id="pickParticipant"
+            <input class="Selectors" type="button" value="Pick Someone!" id="pickParticipant"
                    style="visibility:hidden;"
                    onClick="pickParticipant()"/>
-            <input class="button displayed" type="button" value="Next" id="Next"
+            <input class="Selectors" type="button" value="Next" id="Next"
                    style="visibility:visible;"
                    onClick="pickParticipant()"/>
         </p>
