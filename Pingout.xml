@@ -68,6 +68,10 @@
 			
 			function drawFrame(){
 				var context = canvas.getContext('2d');
+				// Clear the canvas
+				context.setTransform(1,0,0,1,0,0);
+				context.fillStyle = 'rgb(0,0,0)';
+				context.fillRect(0,0,600,400);
 				
 				context.drawImage(ball,0,0);
 				
