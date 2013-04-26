@@ -32,12 +32,16 @@
             // Keep track of this
 			var canvas = document.getElementById('canvas');
             var ball = new Image();
-            var overlay = '';
+            var ballLocation = {x:0,y:0};
+			var ballSpeed = {x:1,y:1};
+			var ballStartingPosition = {x:0,y:0}
 
 			gapi.hangout.onApiReady.add(
 				function(eventObj) {
 					if (eventObj.isApiReady) {
 						ball.src = 'https://raw.github.com/zagarachi/GoogleHangoutsAPIPlayground/master/ball.png';
+						ball.height = 50;
+						ball.width = 50;
 						animate();
 					}
 				}
@@ -59,8 +63,12 @@
 				context.fillStyle = 'rgb(0,0,0)';
 				context.fillRect(0,0,600,400);
 				
-				context.drawImage(ball,0,0);
-				
+				var newPosition = nextPosition();
+				context.drawImage(ball,newPosition.x, newPosition.y);
+			}
+			
+			function nextPosition(){
+				return {x:ballLocation.x+ballSpeed.x, y:ballLocation.y+ballSpeed.y}
 			}
 			
 			/** Standard requestAnimFrame from paulirish.com, running 30 fps */
