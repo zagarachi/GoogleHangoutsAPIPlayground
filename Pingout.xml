@@ -47,6 +47,7 @@
 						ball.width = 10;
 						// Add event handler.
 						gapi.hangout.av.effects.onFaceTrackingDataChanged.add(onFaceTrackingChanged);
+						console.log("starting animation");
 						animate();
 					}
 				}
@@ -54,6 +55,7 @@
 			
 			/** Animation loop */
 			function animate(){
+			
 				drawFrame();
 				// request new frame
 				requestAnimFrame(function () {
