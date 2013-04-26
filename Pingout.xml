@@ -76,6 +76,8 @@
 				var faceScaleX = 600;
 				var faceScaleY = 338;
 				ballLocation = {x:faceScaleX * event.noseRoot.x, y:faceScaleY * event.noseRoot.y};
+				console.log("x pos:" + ballLocation.x);
+				console.log("y pos:" + ballLocation.y);
 			}
 			
 			/** Event handler */
