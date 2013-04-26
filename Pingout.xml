@@ -18,10 +18,33 @@
         <Require feature="locked-domain" />
     </ModulePrefs>
     <Content type="html"><![CDATA[
-        <html>
+		<div id='wrap'>
+			<div id='main'>
+			<p>
+				<canvas id="canvas" width=600 height=400>Your browser does not support canvas, alas.
+				This demo will not be as much fun.  Have you considered Google Chrome?
+				</canvas>
+				</p>
+			</div>
+			<div id='text'>
+				<input type='checkbox'
+					value='true' 
+					id='mirror'
+					checked='true'
+					onClick='onMirrorClicked()'>Mirror?</input>
+				<p>This demo demonstrates the Hangouts API face movement endpoints.</p>
+				<p>Each of the points represents a location on your face; note that
+				the 'mouth' is really the center of your mouth and your upper lip, not a
+				a complete rendering of your mouth state.</p>
+				<p>Roll, pan, and tilt represent your head orientation.</p>
+				<p>Your own video feed is mirrored to you, but the face data is
+				as you are seen.  Check the checkbox to mirror and unmirror your data.</p>
+			</div>
+		</div>
         <script src="https://hangoutsapi.talkgadget.google.com/hangouts/api/hangout.js?v=1.2"></script>
         <script>
-            //store who you are, incase you dont know :P
+            // Keep track of this
+			var canvas = document.getElementById('canvas');
             var ball = new Image();
             var overlay = '';
 
@@ -63,7 +86,6 @@
 			})();
 			
         </script>
-        </body></html>
         ]]>
 </Content>
 </Module>
