@@ -62,13 +62,13 @@
 				context.setTransform(1,0,0,1,0,0);
 				context.fillStyle = 'rgb(0,0,0)';
 				context.fillRect(0,0,600,400);
-				
-				var newPosition = nextPosition();
-				context.drawImage(ball,newPosition.x, newPosition.y);
+
+				nextPosition();
+				context.drawImage(ball,ballLocation.x, ballLocation.y);
 			}
 			
 			function nextPosition(){
-				return {x:ballLocation.x+ballSpeed.x, y:ballLocation.y+ballSpeed.y}
+				ballLocation = {x:ballLocation.x+ballSpeed.x, y:ballLocation.y+ballSpeed.y};
 			}
 			
 			/** Standard requestAnimFrame from paulirish.com, running 30 fps */
