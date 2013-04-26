@@ -34,14 +34,19 @@
             var ball = new Image();
             var ballLocation = {x:0,y:0};
 			var ballSpeed = {x:1,y:1};
-			var ballStartingPosition = {x:0,y:0}
+			
+			// Keep track of recent events.
+			var lastGoodEvent;
+			var lastEvent;
 
 			gapi.hangout.onApiReady.add(
 				function(eventObj) {
 					if (eventObj.isApiReady) {
 						ball.src = 'https://raw.github.com/zagarachi/GoogleHangoutsAPIPlayground/master/ball.png';
-						ball.height = 50;
-						ball.width = 50;
+						ball.height = 10;
+						ball.width = 10;
+						// Add event handler.
+						gapi.hangout.av.effects.onFaceTrackingDataChanged.add(onFaceTrackingChanged);
 						animate();
 					}
 				}
@@ -68,7 +73,22 @@
 			}
 			
 			function nextPosition(){
-				ballLocation = {x:ballLocation.x+ballSpeed.x, y:ballLocation.y+ballSpeed.y};
+				var faceScaleX = 600;
+				var faceScaleY = 338;
+				ballLocation = {x:faceScaleX * event.noseRoot.x, y:faceScaleY * event.noseRoot.y};
+			}
+			
+			/** Event handler */
+			function onFaceTrackingChanged(event) {
+				try {
+					lastEvent = event;
+					if (event.hasFace) {
+						lastGoodEvent = event;
+					}
+				} catch(e) {
+					console.log("onFaceTrackingChanged: ERROR");
+					console.log(e);
+				}
 			}
 			
 			/** Standard requestAnimFrame from paulirish.com, running 30 fps */
